@@ -1,13 +1,13 @@
 <template>
   <main class="pt-8 text-center">
-    <h1 class="mb-8 text-3xl font-bold uppercase">Tic Tac Toe</h1>
+    <h1 class="mb-8 text-5xl font-bold text-black">Tic Tac Toe</h1>
 
-    <h3 class="text-xl mb-4">Lượt chơi: {{ player }}</h3>
+    <h3 class="text-xl mb-4 text-black font-bold">Lượt chơi: {{ player }}</h3>
 
     <Board :board="board" :makeMove="makeMove" />
 
     <div class="text-center">
-      <h2 v-if="winner" class="text-6xl font-bold mb-8">Player '{{ winner }}' wins!</h2>
+      <h2 v-if="winner" class="text-6xl font-bold mb-8 text-black">Người chơi '{{ winner }}' đã chiến thắng!</h2>
       <ResetButton @click="resetGame" />
     </div>
   </main>
@@ -17,6 +17,8 @@
 import { ref, computed } from 'vue'
 import Board from './components/Board.vue'
 import ResetButton from './components/ResetButton.vue'
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const player = ref('X')
 const board = ref(Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => '')))
@@ -48,6 +50,7 @@ const makeMove = (x, y) => {
 }
 
 const resetGame = () => {
+  toast.success("Reset Thành Công!")
   board.value = [
     ['', '', ''],
     ['', '', ''],
@@ -60,6 +63,6 @@ const resetGame = () => {
 
 <style>
 body {
-  @apply bg-gray-800 text-white;
+  @apply bg-[#3f7fbf] text-white;
 }
 </style>

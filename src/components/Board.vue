@@ -3,17 +3,17 @@
         <div v-for="(row, x) in board" :key="x" class="flex">
             <div v-for="(cell, y) in row" :key="y" :class="[
                 'border',
-                'border-white',
+                'border-black',
                 'w-24',
                 'h-24',
-                'hover:bg-gray-700',
+                'hover:bg-gray-400',
                 'flex',
                 'items-center',
                 'justify-center',
                 'material-icons-outlined',
                 'text-4xl',
                 'cursor-pointer',
-                cell === 'X' ? 'text-pink-500' : 'text-blue-400',
+                cell === 'X' ? 'text-red-500' : 'text-white',
             ]" @click="makeMove(x, y)">
                 {{ cell === 'X' ? 'X' : cell === 'O' ? 'O' : '' }}
             </div>
